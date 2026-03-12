@@ -1,48 +1,40 @@
-\# Hospital Appointment Management System
-
-
+# Hospital Appointment Management System:
 
 This project is a backend system built using Spring Boot and MySQL.
 
 
 
-\## Features (Planned)
+# Features (Planned):
+
+- Patient registration
+
+- Doctor management
+
+- Appointment booking
+
+- Prevent double booking
+
+- REST API endpoints
 
 
 
-\- Patient registration
+# Tech Stack:
 
-\- Doctor management
+- Java
 
-\- Appointment booking
+- Spring Boot
 
-\- Prevent double booking
+- Spring Data JPA
 
-\- REST API endpoints
+- Hibernate
 
+- MySQL
 
-
-\## Tech Stack
-
-
-
-\- Java
-
-\- Spring Boot
-
-\- Spring Data JPA
-
-\- Hibernate
-
-\- MySQL
-
-\- Maven
+- Maven
 
 
 
-\## Project Status
-
-
+# Project Status:
 
 Currently in development. Backend domain modeling in progress.
 
