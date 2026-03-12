@@ -2,7 +2,7 @@
 
 
 
-This project is a backend system built using \*\*Spring Boot\*\* and \*\*MySQL\*\*.
+This project is a backend system built using Spring Boot and MySQL.
 
 
 
