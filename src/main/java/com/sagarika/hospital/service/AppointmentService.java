@@ -7,6 +7,9 @@ import com.sagarika.hospital.repository.AppointmentRepository;
 import com.sagarika.hospital.repository.DoctorRepository;
 import com.sagarika.hospital.repository.PatientRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
+import com.sagarika.hospital.dto.AppointmentResponse;
 
 import java.util.List;
 
@@ -30,29 +33,31 @@ public class AppointmentService {
         this.doctorRepo = doctorRepo;
     }
     private Appointment getAppointmentOrThrow(Long id){
-        return appointmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Appointment not found with id: "+id));
+        return appointmentRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Appointment not found with id: "+id));
     }
 
     //Create
     public Appointment createAppointment(Long patientId, Long doctorId, Appointment appointment){
-        Patient patient = patientRepo.findById(patientId).orElseThrow(() -> new RuntimeException("Patient not found with id: " + patientId));
-        Doctor doctor = doctorRepo.findById(doctorId).orElseThrow(() -> new RuntimeException("Doctor not found with id: " + doctorId));
+
+        Patient patient = patientRepo.findById(patientId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient not found with id: " + patientId));
+        Doctor doctor = doctorRepo.findById(doctorId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Doctor not found with id: " + doctorId));
 
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
+        appointment.setStatus("SCHEDULED");
 
         return appointmentRepo.save(appointment);
 
     }
 
     //Read
-    public List<Appointment> getAllAppointments(){
-        return appointmentRepo.findAll();
+    public List<AppointmentResponse> getAllAppointments(){
+        return appointmentRepo.findAll().stream().map(this::mapToResponse).toList();
     }
 
     //Read By ID
-    public Appointment getAppointmentById(Long id){
-        return getAppointmentOrThrow(id);
+    public AppointmentResponse getAppointmentById(Long id) {
+        return mapToResponse(getAppointmentOrThrow(id));
     }
 
     //Update
@@ -61,6 +66,17 @@ public class AppointmentService {
 
         existing.setAppointmentDate(updatedAppointment.getAppointmentDate());
         existing.setAppointmentTime(updatedAppointment.getAppointmentTime());
+        existing.setReason(updatedAppointment.getReason());
+
+        if (updatedAppointment.getStatus() != null) {
+            String status = updatedAppointment.getStatus();
+
+            if (!status.equals("SCHEDULED") && !status.equals("COMPLETED") && !status.equals("CANCELLED")) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status value");
+            }
+
+            existing.setStatus(status);
+        }
 
         return appointmentRepo.save(existing);
     }
@@ -70,5 +86,28 @@ public class AppointmentService {
         Appointment existing = getAppointmentOrThrow(id);
         appointmentRepo.delete(existing);
     }
+
+
+
+    //Helper Method
+    private AppointmentResponse mapToResponse(Appointment appointment){
+        AppointmentResponse res = new AppointmentResponse();
+
+        res.setId(appointment.getId());
+        res.setAppointmentDate(appointment.getAppointmentDate());
+        res.setAppointmentTime(appointment.getAppointmentTime());
+        res.setReason(appointment.getReason());
+        res.setStatus(appointment.getStatus());
+
+        res.setDoctorName(appointment.getDoctor().getName());
+        res.setPatientName(appointment.getPatient().getName());
+
+        return res;
+    }
+
+
+
+
+
 
 }

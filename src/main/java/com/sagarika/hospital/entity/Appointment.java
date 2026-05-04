@@ -1,24 +1,30 @@
 package com.sagarika.hospital.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "appointments")
 
 
-public class Appointment {
+public class Appointment{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(nullable = false)
     private LocalDate appointmentDate;
 
+    @NotNull
     @Column(nullable = false)
     private LocalTime appointmentTime;
 
+    @NotNull
     @Column(nullable = false)
     private String reason;
 
@@ -27,11 +33,22 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
+    @JsonIgnore
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
+    @JsonIgnore
     private Doctor doctor;
+
+
+    //Getter & Setter of Patient
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id = id;
+    }
 
 
     //Getter & Setter of Patient
