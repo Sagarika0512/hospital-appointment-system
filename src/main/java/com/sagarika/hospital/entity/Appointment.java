@@ -24,12 +24,15 @@ public class Appointment{
     @Column(nullable = false)
     private LocalTime appointmentTime;
 
-    @NotNull
+    // @NotNull -> only prevents null
+    // @NotBlank -> prevents null + empty + spaces
+    @NotBlank
     @Column(nullable = false)
     private String reason;
 
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
@@ -97,10 +100,10 @@ public class Appointment{
     }
 
     //Getter & Setter of Status
-    public String getStatus(){
+    public AppointmentStatus getStatus(){
         return status;
     }
-    public void setStatus(String status){
+    public void setStatus(AppointmentStatus status){
         this.status = status;
     }
 }

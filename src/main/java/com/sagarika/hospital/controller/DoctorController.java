@@ -3,6 +3,7 @@ package com.sagarika.hospital.controller;
 
 import com.sagarika.hospital.entity.Doctor;
 import com.sagarika.hospital.service.DoctorService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class DoctorController {
 
     //Create Doctor
     @PostMapping
-    public Doctor createDoctor(@RequestBody Doctor doctor){
+    public Doctor createDoctor(@Valid @RequestBody Doctor doctor){
         return doctorService.saveDoctor(doctor);
     }
 
@@ -41,7 +42,7 @@ public class DoctorController {
 
     //Update
     @PutMapping("/{id}")
-    public Doctor updateDoctor(@PathVariable Long id, @RequestBody Doctor doctor){
+    public Doctor updateDoctor(@PathVariable Long id, @Valid @RequestBody Doctor doctor){
         return doctorService.updateDoctor(id, doctor);
     }
 

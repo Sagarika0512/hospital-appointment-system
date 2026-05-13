@@ -1,6 +1,8 @@
 package com.sagarika.hospital.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "doctors")
@@ -10,15 +12,20 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @NotBlank
     @Column(nullable = false)
     private String specialization;
 
+    @Email
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String email;
 
+    @NotBlank
     @Column(nullable = false)
     private String phone;
 

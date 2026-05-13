@@ -1,6 +1,9 @@
 package com.sagarika.hospital.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 
 @Entity
@@ -11,12 +14,16 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @Email
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String email;
 
+    @NotBlank
     @Column(nullable = false)
     private String phone;
 

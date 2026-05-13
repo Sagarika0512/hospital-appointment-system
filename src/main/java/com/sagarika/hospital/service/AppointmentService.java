@@ -1,16 +1,17 @@
 package com.sagarika.hospital.service;
 
+import com.sagarika.hospital.dto.AppointmentRequest;
 import com.sagarika.hospital.entity.Appointment;
+import com.sagarika.hospital.entity.AppointmentStatus;
 import com.sagarika.hospital.entity.Doctor;
 import com.sagarika.hospital.entity.Patient;
 import com.sagarika.hospital.repository.AppointmentRepository;
 import com.sagarika.hospital.repository.DoctorRepository;
 import com.sagarika.hospital.repository.PatientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
 import com.sagarika.hospital.dto.AppointmentResponse;
-
+import com.sagarika.hospital.exception.AppointmentConflictException;
+import com.sagarika.hospital.exception.ResourceNotFoundException;
 import java.util.List;
 
 @Service
@@ -19,8 +20,6 @@ public class AppointmentService {
     private final AppointmentRepository appointmentRepo;
     private final PatientRepository patientRepo;
     private final DoctorRepository doctorRepo;
-
-
 
     public AppointmentService(
             AppointmentRepository appointmentRepo,
@@ -33,20 +32,57 @@ public class AppointmentService {
         this.doctorRepo = doctorRepo;
     }
     private Appointment getAppointmentOrThrow(Long id){
-        return appointmentRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Appointment not found with id: "+id));
+        return appointmentRepo.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Appointment not found with id: "+id
+                )
+        );
     }
 
     //Create
-    public Appointment createAppointment(Long patientId, Long doctorId, Appointment appointment){
+    public AppointmentResponse createAppointment(AppointmentRequest request){
 
-        Patient patient = patientRepo.findById(patientId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient not found with id: " + patientId));
-        Doctor doctor = doctorRepo.findById(doctorId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Doctor not found with id: " + doctorId));
+        // 1. Fetch doctor & patient
+        Doctor doctor = doctorRepo.findById(request.getDoctorId()).orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Doctor not found with id: " + request.getDoctorId()
+                )
+        );
+        Patient patient = patientRepo.findById(request.getPatientId()).orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Patient not found with id: " + request.getPatientId()
+                )
+        );
 
-        appointment.setPatient(patient);
+        //Adding Double Booking Check OR Check Booking Conflict
+        boolean alreadyBooked = appointmentRepo.existsByDoctorIdAndAppointmentDateAndAppointmentTime(
+                doctor.getId(),
+                request.getAppointmentDate(),
+                request.getAppointmentTime()
+
+        );
+        if(alreadyBooked){
+            throw new AppointmentConflictException(
+                    "Doctor is already booked for this time slot");
+        }
+
+
+        // 2. Create appointment entity
+        Appointment appointment = new Appointment();
         appointment.setDoctor(doctor);
-        appointment.setStatus("SCHEDULED");
+        appointment.setPatient(patient);
+        appointment.setAppointmentDate(request.getAppointmentDate());
+        appointment.setAppointmentTime(request.getAppointmentTime());
+        appointment.setReason(request.getReason());
+        appointment.setStatus(AppointmentStatus.SCHEDULED);
 
-        return appointmentRepo.save(appointment);
+
+
+        // 3. Save
+        Appointment saved = appointmentRepo.save(appointment);
+
+        // 4. Convert to response DTO
+        return mapToResponse(saved);
 
     }
 
@@ -61,24 +97,29 @@ public class AppointmentService {
     }
 
     //Update
-    public Appointment updateAppointment(Long id, Appointment updatedAppointment){
+    public AppointmentResponse updateAppointment(Long id, AppointmentRequest request){
         Appointment existing = getAppointmentOrThrow(id);
 
-        existing.setAppointmentDate(updatedAppointment.getAppointmentDate());
-        existing.setAppointmentTime(updatedAppointment.getAppointmentTime());
-        existing.setReason(updatedAppointment.getReason());
-
-        if (updatedAppointment.getStatus() != null) {
-            String status = updatedAppointment.getStatus();
-
-            if (!status.equals("SCHEDULED") && !status.equals("COMPLETED") && !status.equals("CANCELLED")) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status value");
-            }
-
-            existing.setStatus(status);
+        //Adding Double Booking Check OR Check Booking Conflict
+        boolean alreadyBooked = appointmentRepo.existsByDoctorIdAndAppointmentDateAndAppointmentTimeAndIdNot(
+                existing.getDoctor().getId(),
+                request.getAppointmentDate(),
+                request.getAppointmentTime(),
+                existing.getId()
+        );
+        if(alreadyBooked){
+            throw new AppointmentConflictException(
+                    "Doctor is already booked for this time slot"
+            );
         }
 
-        return appointmentRepo.save(existing);
+        existing.setAppointmentDate(request.getAppointmentDate());
+        existing.setAppointmentTime(request.getAppointmentTime());
+        existing.setReason(request.getReason());
+
+
+        Appointment saved = appointmentRepo.save(existing);
+        return mapToResponse(saved);
     }
 
     //Delete
@@ -88,8 +129,8 @@ public class AppointmentService {
     }
 
 
-
-    //Helper Method
+    //Mapping Helper
+    //Bcz ALL helper methods ≠ only mapping
     private AppointmentResponse mapToResponse(Appointment appointment){
         AppointmentResponse res = new AppointmentResponse();
 
@@ -97,17 +138,11 @@ public class AppointmentService {
         res.setAppointmentDate(appointment.getAppointmentDate());
         res.setAppointmentTime(appointment.getAppointmentTime());
         res.setReason(appointment.getReason());
-        res.setStatus(appointment.getStatus());
+        res.setStatus(appointment.getStatus().name());
 
         res.setDoctorName(appointment.getDoctor().getName());
         res.setPatientName(appointment.getPatient().getName());
 
         return res;
     }
-
-
-
-
-
-
 }
