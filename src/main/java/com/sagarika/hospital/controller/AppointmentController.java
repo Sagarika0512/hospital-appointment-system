@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/appointments")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AppointmentController {
 
     //Inject Service
