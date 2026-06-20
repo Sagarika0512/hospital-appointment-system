@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { login } from "../services/authService";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
     //This is component where state variables and submission is being handled.
 
+    const { setUser } = useContext(AuthContext);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,6 +29,8 @@ function Login() {
 
             const response = await login(loginData);
 
+            setUser(response);
+            
             console.log(response);
             alert("Login successful");
 
