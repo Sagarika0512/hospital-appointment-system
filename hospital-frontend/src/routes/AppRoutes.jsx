@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import ProtectedRoute from "../components/ProtectedRoute";
 
+import Navbar from "../components/Navbar";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Doctors from "../pages/Doctors";
@@ -15,8 +16,16 @@ function AppRoutes() {
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/doctors" element={<Doctors />} />
-                <Route path="/appointments" element={<Appointments />} />
-                <Route path="/book-appointment" element={<BookAppointment />} />
+                <Route path="/appointments" element={
+                    <ProtectedRoute>
+                        <Appointments />
+                    </ProtectedRoute>
+                } />
+                <Route path="/book-appointment" element={
+                    <ProtectedRoute>
+                        <BookAppointment />
+                    </ProtectedRoute>
+                } />
             </Routes>
         </BrowserRouter>
     );

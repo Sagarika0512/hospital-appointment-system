@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     return (
         <nav>
@@ -14,6 +14,10 @@ function Navbar() {
             <Link to="/appointments">Appointments</Link>
 
             {user && <span> | Welcome, {user.name}!</span>}
+
+            {user && (
+                <button onClick={logout}> Logout </button>
+            )}
         </nav>
 
         
