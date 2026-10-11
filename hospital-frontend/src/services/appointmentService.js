@@ -1,13 +1,33 @@
 import axiosInstance from "../api/axiosConfig";
 
-//Getting all appointments
-export const getAppointments = async () => {
-    const response = await axiosInstance.get("/api/appointments");
+// Getting all appointments
+// ADMIN receives all appointments; PATIENT receives only their own.
+export const getAppointments = async (page = 0, size = 50) => {
+    const safeSize = Math.min(Math.max(size, 1), 50);
+    const response = await axiosInstance.get("/api/appointments", {
+        params: { page, size: safeSize }
+    });
     return response.data;
 };
 
-//Creating Appointment
+// Creating Appointment
+// PATIENT: do not send patientId (backend resolves from auth).
+// ADMIN: must include patientId in appointmentData.
 export const createAppointment = async (appointmentData) => {
     const response = await axiosInstance.post("/api/appointments", appointmentData);
+    return response.data;
+};
+
+// Cancel a SCHEDULED appointment.
+// PATIENT can cancel their own; ADMIN can cancel any.
+export const cancelAppointment = async (id) => {
+    const response = await axiosInstance.patch(`/api/appointments/${id}/cancel`);
+    return response.data;
+};
+
+// Mark a SCHEDULED appointment as COMPLETE.
+// ADMIN only.
+export const completeAppointment = async (id) => {
+    const response = await axiosInstance.patch(`/api/appointments/${id}/complete`);
     return response.data;
 };

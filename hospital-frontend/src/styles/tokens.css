@@ -1,0 +1,141 @@
+/**
+ * CarePulse HMS — Design System Tokens
+ * Source of Truth: Approved Google Stitch UI Specification
+ *
+ * Visual Profile:
+ * - Light clinical healthcare interface
+ * - White / soft blue surfaces
+ * - Primary healthcare blue: #0284C7 (Sky 600)
+ * - Dark slate text: #0F172A (Slate 900)
+ * - Secondary text: #334155 (Slate 700) / #64748B (Slate 500)
+ * - Soft clinical borders: #E2E8F0 (Slate 200)
+ * - Subtle shadows & Plus Jakarta Sans typography
+ */
+
+:root {
+  /* ── Color Palette: Surfaces & Backgrounds ── */
+  --cp-background: #F8FAFC;            /* Clean light slate/blue backdrop */
+  --cp-surface: #FFFFFF;               /* Card & panel surface */
+  --cp-surface-muted: #F1F5F9;         /* Neutral muted surface (Slate 100) */
+  --cp-surface-subtle: #F0F9FF;        /* Soft healthcare blue tint (Sky 50) */
+  --cp-surface-highlight: #E0F2FE;     /* Light blue surface accent (Sky 100) */
+
+  /* ── Color Palette: Primary Healthcare Blue ── */
+  --cp-primary: #0284C7;               /* Approved primary healthcare blue */
+  --cp-primary-hover: #0369A1;         /* Hover state (Sky 700) */
+  --cp-primary-active: #075985;        /* Pressed / active state (Sky 800) */
+  --cp-primary-light: #E0F2FE;         /* Soft primary badge / highlight background */
+  --cp-primary-subtle: #F0F9FF;        /* Subtle primary background */
+  --cp-primary-border: #BAE6FD;        /* Soft primary border (Sky 200) */
+
+  /* ── Color Palette: Typography ── */
+  --cp-text-primary: #0F172A;          /* High-contrast dark slate body & heading */
+  --cp-text-secondary: #334155;        /* Medium-contrast secondary text (Slate 700) */
+  --cp-text-muted: #64748B;            /* Low-contrast captions & helper text (Slate 500) */
+  --cp-text-inverse: #FFFFFF;          /* Pure white text on primary backgrounds */
+  --cp-text-link: #0284C7;             /* Interactive link blue */
+
+  /* ── Color Palette: Borders ── */
+  --cp-border: #E2E8F0;                /* Default soft clinical border (Slate 200) */
+  --cp-border-light: #F1F5F9;          /* Subdued internal divider (Slate 100) */
+  --cp-border-strong: #CBD5E1;         /* Focused / emphasized border (Slate 300) */
+
+  /* ── Color Palette: Semantic Statuses ── */
+  /* Success / Completed */
+  --cp-success: #16A34A;               /* Green 600 */
+  --cp-success-hover: #15803D;
+  --cp-success-background: #F0FDF4;    /* Green 50 */
+  --cp-success-border: #BBF7D0;        /* Green 200 */
+  --cp-success-text: #15803D;          /* Green 700 */
+
+  /* Warning / Scheduled / Pending */
+  --cp-warning: #D97706;               /* Amber 600 */
+  --cp-warning-hover: #B45309;
+  --cp-warning-background: #FFFBEB;    /* Amber 50 */
+  --cp-warning-border: #FDE68A;        /* Amber 200 */
+  --cp-warning-text: #B45309;          /* Amber 700 */
+
+  /* Danger / Cancelled / Error */
+  --cp-danger: #DC2626;                /* Red 600 */
+  --cp-danger-hover: #B91C1C;
+  --cp-danger-background: #FEF2F2;     /* Red 50 */
+  --cp-danger-border: #FECACA;         /* Red 200 */
+  --cp-danger-text: #B91C1C;           /* Red 700 */
+
+  /* Info */
+  --cp-info: #0284C7;
+  --cp-info-background: #F0F9FF;
+  --cp-info-border: #BAE6FD;
+  --cp-info-text: #0369A1;
+
+  /* ── Typography Tokens ── */
+  --cp-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --cp-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Font Sizes */
+  --cp-font-size-xs: 0.75rem;          /* 12px */
+  --cp-font-size-sm: 0.875rem;         /* 14px */
+  --cp-font-size-base: 0.9375rem;      /* 15px */
+  --cp-font-size-md: 1rem;             /* 16px */
+  --cp-font-size-lg: 1.125rem;         /* 18px */
+  --cp-font-size-xl: 1.25rem;          /* 20px */
+  --cp-font-size-2xl: 1.5rem;          /* 24px */
+  --cp-font-size-3xl: 1.875rem;        /* 30px */
+  --cp-font-size-4xl: 2.25rem;         /* 36px */
+
+  /* Font Weights */
+  --cp-font-weight-regular: 400;
+  --cp-font-weight-medium: 500;
+  --cp-font-weight-semibold: 600;
+  --cp-font-weight-bold: 700;
+
+  /* Line Heights */
+  --cp-line-height-tight: 1.25;
+  --cp-line-height-snug: 1.375;
+  --cp-line-height-normal: 1.5;
+  --cp-line-height-relaxed: 1.625;
+
+  /* Letter Spacing */
+  --cp-letter-spacing-tight: -0.025em;
+  --cp-letter-spacing-normal: 0em;
+  --cp-letter-spacing-wide: 0.025em;
+
+  /* ── Spacing Scale ── */
+  --cp-spacing-xs: 0.25rem;            /* 4px */
+  --cp-spacing-sm: 0.5rem;             /* 8px */
+  --cp-spacing-md: 1rem;               /* 16px */
+  --cp-spacing-lg: 1.5rem;             /* 24px */
+  --cp-spacing-xl: 2rem;               /* 32px */
+  --cp-spacing-2xl: 3rem;              /* 48px */
+
+  /* ── Border Radius Scale ── */
+  --cp-radius-xs: 4px;
+  --cp-radius-sm: 6px;
+  --cp-radius-md: 8px;
+  --cp-radius-lg: 12px;
+  --cp-radius-xl: 16px;
+  --cp-radius-full: 9999px;
+
+  /* ── Subtle Healthcare Shadow Scale ── */
+  --cp-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --cp-shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --cp-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --cp-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --cp-shadow-focus: 0 0 0 3px rgba(2, 132, 199, 0.22);
+  --cp-shadow-danger-focus: 0 0 0 3px rgba(220, 38, 38, 0.22);
+
+  /* ── Transitions & Animation ── */
+  --cp-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cp-transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --cp-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Z-Index Hierarchy ── */
+  --cp-z-dropdown: 1000;
+  --cp-z-sticky: 1020;
+  --cp-z-header: 1030;
+  --cp-z-sidebar: 1040;
+  --cp-z-modal-backdrop: 1050;
+  --cp-z-modal: 1060;
+  --cp-z-toast: 1070;
+  --cp-z-tooltip: 1080;
+}

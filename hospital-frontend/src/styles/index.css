@@ -1,0 +1,17 @@
+/**
+ * CarePulse HMS — Master Design System Entrypoint
+ * Aggregates design tokens, base styles, and utility classes.
+ */
+
+@import './tokens.css';
+@import './base.css';
+@import './utilities.css';
+@import './components.css';
+@import './layout.css';
+@import './auth.css';
+@import './dashboard.css';
+@import './doctors.css';
+@import './book-appointment.css';
+@import './appointments.css';
+@import './patients.css';
+

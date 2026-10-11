@@ -1,0 +1,140 @@
+/**
+ * CarePulse HMS — Authentication Screens Styling (Login & Register)
+ * Light Clinical Precision UI according to approved Google Stitch specification
+ */
+
+.cp-auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: var(--cp-background);
+  background-image: radial-gradient(var(--cp-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.cp-auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-xl);
+  box-shadow: var(--cp-shadow-md);
+  padding: 2.25rem 2rem;
+  position: relative;
+  transition: box-shadow var(--cp-transition-normal);
+}
+
+.cp-auth-card-wide {
+  max-width: 500px;
+}
+
+@media (max-width: 480px) {
+  .cp-auth-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--cp-radius-lg);
+    box-shadow: var(--cp-shadow-sm);
+  }
+}
+
+.cp-auth-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.cp-auth-brand-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.cp-auth-title {
+  font-size: 1.625rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+  letter-spacing: var(--cp-letter-spacing-tight);
+  margin: 0 0 0.375rem 0;
+}
+
+.cp-auth-subtitle {
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+  line-height: var(--cp-line-height-normal);
+  margin: 0;
+}
+
+/* Two-column layout for First Name & Last Name */
+.cp-auth-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+
+@media (max-width: 520px) {
+  .cp-auth-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* Form options row: Remember Me */
+.cp-auth-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: var(--cp-font-size-xs);
+}
+
+.cp-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--cp-font-size-sm);
+  font-weight: var(--cp-font-weight-medium);
+  color: var(--cp-text-secondary);
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+}
+
+.cp-checkbox-input {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--cp-radius-xs);
+  border: 1px solid var(--cp-border);
+  accent-color: var(--cp-primary);
+  cursor: pointer;
+}
+
+.cp-checkbox-input:focus-visible {
+  outline: 2px solid var(--cp-primary);
+  outline-offset: 2px;
+}
+
+/* Auth card footer */
+.cp-auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cp-border-light);
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+}
+
+.cp-auth-footer a {
+  font-weight: var(--cp-font-weight-semibold);
+  margin-left: 0.25rem;
+}
+
+.cp-auth-notice {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  text-align: center;
+  margin-top: 1.25rem;
+  line-height: 1.4;
+}

@@ -1,0 +1,337 @@
+/**
+ * CarePulse HMS — Doctors Directory Styles
+ * Light Clinical Precision UI matching approved Google Stitch specification
+ */
+
+.cp-doctors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── SEARCH & FILTER TOOLBAR ── */
+.cp-doctors-toolbar {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--cp-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-doctors-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cp-doctors-search-wrapper {
+  flex: 1;
+  min-width: 260px;
+}
+
+.cp-doctors-select-wrapper {
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.cp-doctors-results-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  border-top: 1px solid var(--cp-border-light);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.cp-doctors-results-meta strong {
+  color: var(--cp-text-primary);
+}
+
+.cp-doctors-clear-btn {
+  background: none;
+  border: none;
+  color: var(--cp-primary);
+  font-size: var(--cp-font-size-xs);
+  font-weight: var(--cp-font-weight-medium);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  transition: color var(--cp-transition-fast);
+}
+
+.cp-doctors-clear-btn:hover {
+  color: var(--cp-primary-hover);
+}
+
+/* ── DOCTORS CARD GRID ── */
+.cp-doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .cp-doctors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .cp-doctors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── DOCTOR CARD ── */
+.cp-doctor-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  transition: transform var(--cp-transition-normal), box-shadow var(--cp-transition-normal), border-color var(--cp-transition-normal);
+}
+
+.cp-doctor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cp-shadow-md);
+  border-color: var(--cp-primary-border);
+}
+
+.cp-doctor-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cp-doctor-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cp-doctor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--cp-radius-full);
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary);
+  border: 1.5px solid var(--cp-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--cp-font-weight-bold);
+  font-size: 1.125rem;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.cp-doctor-header-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cp-doctor-name {
+  font-size: 1.125rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+  line-height: 1.25;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp-doctor-specialty-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: var(--cp-surface-subtle);
+  color: var(--cp-primary-dark);
+  border: 1px solid var(--cp-primary-border);
+  border-radius: var(--cp-radius-full);
+  padding: 0.2rem 0.625rem;
+  font-size: var(--cp-font-size-xs);
+  font-weight: var(--cp-font-weight-semibold);
+  margin-top: 0.375rem;
+  align-self: flex-start;
+}
+
+/* ── DOCTOR CONTACT INFO ── */
+.cp-doctor-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--cp-border-light);
+  border-bottom: 1px solid var(--cp-border-light);
+}
+
+.cp-doctor-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp-doctor-contact-item svg {
+  color: var(--cp-text-muted);
+  flex-shrink: 0;
+}
+
+.cp-doctor-contact-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── DOCTOR CARD FOOTER ── */
+.cp-doctor-card-footer {
+  padding-top: 1.25rem;
+}
+
+/* ── RESPONSIVE MOBILE ADJUSTMENTS ── */
+@media (max-width: 600px) {
+  .cp-doctors-toolbar {
+    padding: 1rem;
+  }
+
+  .cp-doctors-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cp-doctors-search-wrapper,
+  .cp-doctors-select-wrapper {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .cp-doctor-card {
+    padding: 1.25rem;
+  }
+}
+
+/* ── ADMIN DOCTORS DIRECTORY (BATCH 12) ── */
+.cp-doctors-admin-table-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-sm);
+  overflow: hidden;
+}
+
+.cp-doctors-admin-desktop-view {
+  display: block;
+}
+
+.cp-doctors-admin-mobile-view {
+  display: none;
+}
+
+/* Mobile card stack for Admin Doctors */
+.cp-doctors-admin-mobile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-doctor-admin-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--cp-shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-doctor-admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cp-doctor-admin-card-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: var(--cp-font-size-xs);
+  background-color: var(--cp-surface-muted);
+  border-radius: var(--cp-radius-md);
+  padding: 0.75rem;
+}
+
+.cp-doctor-admin-card-footer {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid var(--cp-border-light);
+  padding-top: 0.75rem;
+}
+
+.cp-doctor-admin-card-footer .cp-btn {
+  flex: 1;
+  min-height: 44px;
+}
+
+/* Detail Modal */
+.cp-doctor-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1rem;
+}
+
+.cp-doctor-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cp-doctor-detail-label {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  font-weight: var(--cp-font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cp-doctor-detail-value {
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-primary);
+  font-weight: var(--cp-font-weight-semibold);
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .cp-doctors-admin-desktop-view {
+    display: none;
+  }
+
+  .cp-doctors-admin-mobile-view {
+    display: block;
+  }
+
+  .cp-doctor-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

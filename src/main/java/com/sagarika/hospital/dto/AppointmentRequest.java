@@ -7,7 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class AppointmentRequest {
-    @NotNull
+    // Optional for PATIENT (resolved from auth on the backend).
+    // Required for ADMIN bookings on behalf of a patient.
     private Long patientId;
 
     @NotNull

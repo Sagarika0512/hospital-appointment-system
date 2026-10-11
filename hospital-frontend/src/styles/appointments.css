@@ -1,0 +1,234 @@
+/**
+ * CarePulse HMS — Appointments Page Styles
+ * Clinical Precision UI matching CarePulse design system
+ */
+
+.cp-appointments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── TOOLBAR & STATUS TABS ── */
+.cp-appointments-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--cp-shadow-xs);
+}
+
+.cp-appointments-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.cp-appointments-search-wrapper {
+  flex: 1;
+  min-width: 240px;
+  max-width: 360px;
+}
+
+@media (max-width: 640px) {
+  .cp-appointments-search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+.cp-appointments-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cp-appointments-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--cp-radius-md);
+  font-size: var(--cp-font-size-xs);
+  font-weight: var(--cp-font-weight-medium);
+  color: var(--cp-text-secondary);
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--cp-transition-fast);
+}
+
+.cp-appointments-tab:hover {
+  background-color: var(--cp-surface-muted);
+  color: var(--cp-text-primary);
+}
+
+.cp-appointments-tab.active {
+  background-color: var(--cp-primary-subtle);
+  border-color: var(--cp-primary-border);
+  color: var(--cp-primary);
+  font-weight: var(--cp-font-weight-semibold);
+}
+
+.cp-tab-count {
+  font-size: 0.7rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--cp-radius-full);
+  background-color: var(--cp-surface-muted);
+  color: var(--cp-text-muted);
+}
+
+.cp-appointments-tab.active .cp-tab-count {
+  background-color: var(--cp-primary-light);
+  color: var(--cp-primary);
+}
+
+.cp-appointments-meta-note {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+}
+
+/* ── TABLE VIEW (DESKTOP) ── */
+.cp-appointments-table-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-sm);
+  overflow: hidden;
+}
+
+.cp-appointments-desktop-view {
+  display: block;
+}
+
+.cp-appointments-mobile-view {
+  display: none;
+}
+
+.cp-appointment-row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* ── MOBILE CARD STACK ── */
+.cp-appointments-mobile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-appointment-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--cp-shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-appointment-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cp-appointment-card-doctor {
+  font-size: var(--cp-font-size-base);
+  font-weight: var(--cp-font-weight-semibold);
+  color: var(--cp-text-primary);
+  margin: 0;
+}
+
+.cp-appointment-card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  font-size: var(--cp-font-size-xs);
+  background-color: var(--cp-surface-muted);
+  border-radius: var(--cp-radius-md);
+  padding: 0.75rem;
+}
+
+.cp-appointment-card-reason {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-secondary);
+  line-height: var(--cp-line-height-normal);
+}
+
+.cp-appointment-card-footer {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid var(--cp-border-light);
+  padding-top: 0.75rem;
+}
+
+.cp-appointment-card-footer .cp-btn {
+  flex: 1;
+  min-height: 44px;
+}
+
+/* ── DETAIL MODAL ── */
+.cp-appointment-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1rem;
+}
+
+.cp-appointment-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cp-appointment-detail-label {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  font-weight: var(--cp-font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cp-appointment-detail-value {
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-primary);
+  font-weight: var(--cp-font-weight-semibold);
+  word-break: break-word;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .cp-appointments-desktop-view {
+    display: none;
+  }
+
+  .cp-appointments-mobile-view {
+    display: block;
+  }
+
+  .cp-appointments-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cp-appointments-tabs {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .cp-appointment-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

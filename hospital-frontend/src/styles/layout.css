@@ -1,0 +1,380 @@
+/**
+ * CarePulse HMS — Application Shell & Navigation Styles
+ * Light Clinical Precision UI according to approved Google Stitch specification
+ */
+
+/* ── SKIP LINK (ACCESSIBILITY) ── */
+.cp-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--cp-primary);
+  color: var(--cp-text-inverse);
+  padding: 0.5rem 1rem;
+  border-radius: var(--cp-radius-md);
+  font-weight: var(--cp-font-weight-semibold);
+  z-index: var(--cp-z-tooltip);
+  transition: top var(--cp-transition-fast);
+}
+
+.cp-skip-link:focus {
+  top: 1rem;
+}
+
+/* ── SHELL CONTAINER ── */
+.cp-app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--cp-background);
+}
+
+/* ── HEADER ── */
+.cp-header {
+  height: 64px;
+  background-color: var(--cp-surface);
+  border-bottom: 1px solid var(--cp-border);
+  box-shadow: var(--cp-shadow-xs);
+  position: sticky;
+  top: 0;
+  z-index: var(--cp-z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .cp-header {
+    padding: 0 1.5rem;
+  }
+}
+
+.cp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* CarePulse Brand Logo & Name */
+.cp-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.cp-brand-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cp-radius-md);
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary);
+  border: 1px solid var(--cp-primary-border);
+}
+
+.cp-brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.cp-brand-name {
+  font-size: 1.125rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.cp-brand-badge {
+  font-size: 0.6875rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-primary);
+  background-color: var(--cp-surface-highlight);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--cp-radius-xs);
+  letter-spacing: 0.05em;
+}
+
+/* Mobile Hamburger Trigger */
+.cp-mobile-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-md);
+  color: var(--cp-text-secondary);
+  cursor: pointer;
+  padding: 0;
+}
+
+.cp-mobile-toggle-btn:hover {
+  background-color: var(--cp-surface-muted);
+  color: var(--cp-text-primary);
+}
+
+@media (min-width: 1024px) {
+  .cp-mobile-toggle-btn {
+    display: none;
+  }
+}
+
+/* User Identity & Profile Pill */
+.cp-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.cp-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cp-radius-full);
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary);
+  font-weight: var(--cp-font-weight-bold);
+  font-size: 0.875rem;
+  border: 1px solid var(--cp-primary-border);
+  flex-shrink: 0;
+}
+
+.cp-user-info {
+  display: none;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .cp-user-info {
+    display: flex;
+  }
+}
+
+.cp-user-name {
+  font-size: var(--cp-font-size-sm);
+  font-weight: var(--cp-font-weight-semibold);
+  color: var(--cp-text-primary);
+  line-height: 1.2;
+}
+
+.cp-user-role-badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: var(--cp-font-weight-semibold);
+  color: var(--cp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Role Indicator Pill */
+.cp-role-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--cp-radius-full);
+  font-size: var(--cp-font-size-xs);
+  font-weight: var(--cp-font-weight-semibold);
+  letter-spacing: 0.025em;
+}
+
+.cp-role-pill-admin {
+  background-color: #EDE9FE;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+
+.cp-role-pill-patient {
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary-hover);
+  border: 1px solid var(--cp-primary-border);
+}
+
+/* ── SHELL BODY (SIDEBAR + MAIN) ── */
+.cp-shell-body {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+/* ── SIDEBAR (DESKTOP) ── */
+.cp-sidebar {
+  width: 250px;
+  background-color: var(--cp-surface);
+  border-right: 1px solid var(--cp-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: calc(100vh - 64px);
+  padding: 1.25rem 0.875rem;
+}
+
+@media (max-width: 1023px) {
+  .cp-sidebar-desktop {
+    display: none;
+  }
+}
+
+.cp-sidebar-section-title {
+  font-size: 0.6875rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  padding: 0 0.75rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.cp-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Navigation Link */
+.cp-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--cp-radius-md);
+  font-size: var(--cp-font-size-sm);
+  font-weight: var(--cp-font-weight-medium);
+  color: var(--cp-text-secondary);
+  text-decoration: none;
+  transition: all var(--cp-transition-fast);
+  min-height: 44px; /* Touch target */
+  user-select: none;
+}
+
+.cp-nav-item:hover {
+  background-color: var(--cp-surface-muted);
+  color: var(--cp-text-primary);
+  text-decoration: none;
+}
+
+/* Active Nav Item */
+.cp-nav-item.active {
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary);
+  font-weight: var(--cp-font-weight-semibold);
+  border-left: 3px solid var(--cp-primary);
+  padding-left: calc(0.875rem - 3px);
+}
+
+.cp-nav-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.cp-nav-item.active .cp-nav-item-icon {
+  color: var(--cp-primary);
+}
+
+/* ── SIDEBAR DRAWER (MOBILE < 1024px) ── */
+.cp-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: var(--cp-z-sidebar);
+  animation: cp-fade-in var(--cp-transition-normal);
+}
+
+.cp-drawer-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background-color: var(--cp-surface);
+  box-shadow: var(--cp-shadow-lg);
+  z-index: calc(var(--cp-z-sidebar) + 1);
+  display: flex;
+  flex-direction: column;
+  animation: cp-slide-in var(--cp-transition-normal);
+  padding: 1.25rem 1rem;
+}
+
+.cp-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--cp-border-light);
+}
+
+.cp-drawer-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-md);
+  color: var(--cp-text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.cp-drawer-close-btn:hover {
+  background-color: var(--cp-surface-muted);
+  color: var(--cp-text-primary);
+}
+
+@keyframes cp-slide-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* ── MAIN CONTENT AREA ── */
+.cp-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.cp-page-container {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .cp-page-container {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cp-page-container {
+    padding: 2rem 2rem;
+  }
+}

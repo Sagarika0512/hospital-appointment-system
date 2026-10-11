@@ -1,0 +1,262 @@
+/**
+ * CarePulse HMS — Dashboard Styles
+ * Light Clinical Precision UI according to approved Google Stitch specification
+ */
+
+.cp-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── 3 SUMMARY STAT CARDS GRID ── */
+.cp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .cp-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cp-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── SECTION CONTAINERS ── */
+.cp-dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cp-section-title {
+  font-size: 1.25rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+  letter-spacing: var(--cp-letter-spacing-tight);
+  margin: 0;
+}
+
+.cp-section-subtitle {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  margin: 0.25rem 0 0 0;
+}
+
+/* ── UPCOMING APPOINTMENT CARD ── */
+.cp-upcoming-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-left: 4px solid var(--cp-primary);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cp-upcoming-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cp-upcoming-doctor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cp-doctor-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--cp-radius-full);
+  background-color: var(--cp-surface-highlight);
+  color: var(--cp-primary);
+  border: 1px solid var(--cp-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--cp-font-weight-bold);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.cp-doctor-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-doctor-name {
+  font-size: 1.125rem;
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+  line-height: 1.2;
+}
+
+.cp-doctor-specialty {
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.cp-upcoming-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--cp-surface-subtle);
+  border-radius: var(--cp-radius-md);
+  border: 1px solid var(--cp-primary-border);
+}
+
+.cp-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+  font-weight: var(--cp-font-weight-medium);
+}
+
+.cp-meta-item strong {
+  color: var(--cp-text-primary);
+}
+
+.cp-upcoming-reason {
+  font-size: var(--cp-font-size-sm);
+  color: var(--cp-text-secondary);
+  line-height: 1.5;
+}
+
+.cp-upcoming-reason strong {
+  color: var(--cp-text-primary);
+}
+
+/* ── ADMIN DASHBOARD STATUS DISTRIBUTION ── */
+.cp-status-distribution-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--cp-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cp-distribution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cp-distribution-title {
+  font-size: var(--cp-font-size-base);
+  font-weight: var(--cp-font-weight-semibold);
+  color: var(--cp-text-primary);
+  margin: 0;
+}
+
+.cp-distribution-scope {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+}
+
+.cp-distribution-bar {
+  display: flex;
+  height: 12px;
+  width: 100%;
+  border-radius: var(--cp-radius-full);
+  overflow: hidden;
+  background-color: var(--cp-surface-muted);
+  border: 1px solid var(--cp-border-light);
+}
+
+.cp-distribution-segment-scheduled {
+  background-color: var(--cp-warning);
+  transition: width var(--cp-transition-normal);
+}
+
+.cp-distribution-segment-completed {
+  background-color: var(--cp-success);
+  transition: width var(--cp-transition-normal);
+}
+
+.cp-distribution-segment-cancelled {
+  background-color: var(--cp-danger);
+  transition: width var(--cp-transition-normal);
+}
+
+.cp-distribution-legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.cp-distribution-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--cp-radius-md);
+  border: 1px solid var(--cp-border-light);
+  background-color: var(--cp-surface-subtle);
+}
+
+.cp-distribution-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--cp-radius-full);
+  flex-shrink: 0;
+}
+
+.cp-distribution-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-distribution-label {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-muted);
+  font-weight: var(--cp-font-weight-medium);
+}
+
+.cp-distribution-val {
+  font-size: var(--cp-font-size-sm);
+  font-weight: var(--cp-font-weight-bold);
+  color: var(--cp-text-primary);
+}
+
+.cp-distribution-pct {
+  font-size: var(--cp-font-size-xs);
+  color: var(--cp-text-secondary);
+  font-weight: normal;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 680px) {
+  .cp-distribution-legend {
+    grid-template-columns: 1fr;
+  }
+}
+

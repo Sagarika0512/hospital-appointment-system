@@ -1,0 +1,237 @@
+/**
+ * CarePulse HMS — Responsive Foundation & Utility Classes
+ * Breakpoints: Desktop (>= 1024px) | Tablet (768px-1023px) | Mobile (< 768px)
+ */
+
+/* ── Container Layout ── */
+.cp-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--cp-spacing-md);
+  padding-right: var(--cp-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .cp-container {
+    padding-left: var(--cp-spacing-lg);
+    padding-right: var(--cp-spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cp-container {
+    padding-left: var(--cp-spacing-xl);
+    padding-right: var(--cp-spacing-xl);
+  }
+}
+
+/* ── Clinical Surface Cards ── */
+.cp-card {
+  background-color: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius-lg);
+  box-shadow: var(--cp-shadow-sm);
+  padding: var(--cp-spacing-lg);
+  transition: box-shadow var(--cp-transition-normal), border-color var(--cp-transition-normal);
+}
+
+.cp-card-muted {
+  background-color: var(--cp-surface-muted);
+  border: 1px solid var(--cp-border-light);
+  border-radius: var(--cp-radius-lg);
+  padding: var(--cp-spacing-lg);
+}
+
+.cp-card-subtle {
+  background-color: var(--cp-surface-subtle);
+  border: 1px solid var(--cp-primary-border);
+  border-radius: var(--cp-radius-lg);
+  padding: var(--cp-spacing-lg);
+}
+
+/* ── Semantic Status Badges ── */
+.cp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: var(--cp-font-size-xs);
+  font-weight: var(--cp-font-weight-semibold);
+  line-height: 1;
+  border-radius: var(--cp-radius-full);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.cp-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--cp-radius-full);
+}
+
+/* Scheduled / Pending: Warm Amber */
+.cp-badge-scheduled {
+  background-color: var(--cp-warning-background);
+  color: var(--cp-warning-text);
+  border-color: var(--cp-warning-border);
+}
+.cp-badge-scheduled .cp-badge-dot {
+  background-color: var(--cp-warning);
+}
+
+/* Completed: Clinical Green */
+.cp-badge-completed {
+  background-color: var(--cp-success-background);
+  color: var(--cp-success-text);
+  border-color: var(--cp-success-border);
+}
+.cp-badge-completed .cp-badge-dot {
+  background-color: var(--cp-success);
+}
+
+/* Cancelled: Soft Red */
+.cp-badge-cancelled {
+  background-color: var(--cp-danger-background);
+  color: var(--cp-danger-text);
+  border-color: var(--cp-danger-border);
+}
+.cp-badge-cancelled .cp-badge-dot {
+  background-color: var(--cp-danger);
+}
+
+/* Primary / Info: Soft Healthcare Blue */
+.cp-badge-primary {
+  background-color: var(--cp-primary-light);
+  color: var(--cp-primary-hover);
+  border-color: var(--cp-primary-border);
+}
+.cp-badge-primary .cp-badge-dot {
+  background-color: var(--cp-primary);
+}
+
+/* ── Typography Utilities ── */
+.cp-text-primary {
+  color: var(--cp-text-primary) !important;
+}
+
+.cp-text-secondary {
+  color: var(--cp-text-secondary) !important;
+}
+
+.cp-text-muted {
+  color: var(--cp-text-muted) !important;
+}
+
+.cp-text-blue {
+  color: var(--cp-primary) !important;
+}
+
+.cp-text-danger {
+  color: var(--cp-danger) !important;
+}
+
+.cp-text-success {
+  color: var(--cp-success) !important;
+}
+
+/* ── Flexbox Helpers ── */
+.cp-flex {
+  display: flex;
+}
+
+.cp-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cp-items-center {
+  align-items: center;
+}
+
+.cp-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.cp-gap-xs {
+  gap: var(--cp-spacing-xs);
+}
+
+.cp-gap-sm {
+  gap: var(--cp-spacing-sm);
+}
+
+.cp-gap-md {
+  gap: var(--cp-spacing-md);
+}
+
+.cp-gap-lg {
+  gap: var(--cp-spacing-lg);
+}
+
+/* ── Responsive Foundation Breakpoints ── */
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .cp-hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .cp-only-mobile {
+    display: none !important;
+  }
+}
+
+/* Tablet (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cp-hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px), (min-width: 1024px) {
+  .cp-only-tablet {
+    display: none !important;
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .cp-hide-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cp-only-desktop {
+    display: none !important;
+  }
+}
+
+/* Tablet & Desktop combined (>= 768px) */
+@media (min-width: 768px) {
+  .cp-tablet-desktop {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .cp-tablet-desktop {
+    display: none !important;
+  }
+}

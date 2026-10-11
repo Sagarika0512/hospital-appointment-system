@@ -8,9 +8,15 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "appointments")
-
-
+@Table(
+    name = "appointments",
+    uniqueConstraints = {
+        @UniqueConstraint(
+            name = "uk_doctor_date_time",
+            columnNames = {"doctor_id", "appointment_date", "appointment_time"}
+        )
+    }
+)
 public class Appointment{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

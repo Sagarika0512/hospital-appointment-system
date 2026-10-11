@@ -37,3 +37,12 @@ build/
 
 # Node / React
 node_modules/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Historical pre-refactor audit
+audit_report.md
+
