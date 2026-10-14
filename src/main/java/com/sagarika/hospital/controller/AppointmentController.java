@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/api/appointments")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173}")
 public class AppointmentController {
 
     private final AppointmentService appointmentService;

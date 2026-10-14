@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useLocation, useSearchParams, Link } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { createAppointment } from "../services/appointmentService";
 import { getDoctors, getDoctorById } from "../services/doctorService";
 import { notify } from "../components/feedback/toast";
@@ -10,8 +10,7 @@ import { FormField } from "../components/ui/FormField";
 import { Input } from "../components/ui/Input";
 import { Select } from "../components/ui/Select";
 import { Spinner } from "../components/feedback/Spinner";
-import { SkeletonCard } from "../components/feedback/Skeleton";
-import { ErrorState } from "../components/feedback/ErrorState";
+import { StatusBadge } from "../components/ui/StatusBadge";
 import {
   CalendarIcon,
   ClockIcon,
@@ -21,6 +20,8 @@ import {
   CheckIcon,
   ChevronLeftIcon,
   CalendarPlusIcon,
+  RefreshIcon,
+  AlertCircleIcon,
 } from "../components/ui/Icons";
 
 /**

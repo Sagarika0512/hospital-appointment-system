@@ -5,9 +5,10 @@ import { getAppointments } from "../services/appointmentService";
 import { getDoctors } from "../services/doctorService";
 import { PageHeader } from "../components/ui/PageHeader";
 import { StatCard } from "../components/ui/StatCard";
-import { Card, CardHeader, CardBody } from "../components/ui/Card";
+import { Card, CardBody } from "../components/ui/Card";
 import { StatusBadge } from "../components/ui/StatusBadge";
 import { Button } from "../components/ui/Button";
+import { Pagination } from "../components/ui/Pagination";
 import {
   Table,
   TableHeader,
@@ -23,6 +24,7 @@ import {
   CalendarIcon,
   ClockIcon,
   StethoscopeIcon,
+  UserIcon,
 } from "../components/ui/Icons";
 
 // Helper: format "YYYY-MM-DD" -> "MMM D, YYYY"

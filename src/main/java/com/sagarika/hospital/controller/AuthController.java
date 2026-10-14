@@ -24,7 +24,7 @@ import java.util.Map;
 @Tag(name = "Authentication", description = "Endpoints for user registration and JWT authentication")
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173}")
 public class AuthController {
 
     private final UserService userService;

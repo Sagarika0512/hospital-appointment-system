@@ -2,11 +2,13 @@ import axiosInstance from "../api/axiosConfig";
 
 // Getting all appointments
 // ADMIN receives all appointments; PATIENT receives only their own.
-export const getAppointments = async (page = 0, size = 50) => {
+// Backend supports: page, size, sortBy, sortDir
+export const getAppointments = async (page = 0, size = 50, sortBy, sortDir) => {
     const safeSize = Math.min(Math.max(size, 1), 50);
-    const response = await axiosInstance.get("/api/appointments", {
-        params: { page, size: safeSize }
-    });
+    const params = { page, size: safeSize };
+    if (sortBy) params.sortBy = sortBy;
+    if (sortDir) params.sortDir = sortDir;
+    const response = await axiosInstance.get("/api/appointments", { params });
     return response.data;
 };
 

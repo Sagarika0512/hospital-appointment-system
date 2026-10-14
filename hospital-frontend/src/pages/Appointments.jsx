@@ -82,12 +82,19 @@ function formatDoctorName(name) {
 
 export function Appointments() {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   const isAdmin = user?.role === "ADMIN" || user?.role === "ROLE_ADMIN";
 
   if (isAdmin) {
     return <AdminAppointments />;
   }
+
+  return <PatientAppointments />;
+}
+
+function PatientAppointments() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const isAdmin = false;
 
   // Data & Pagination state
 

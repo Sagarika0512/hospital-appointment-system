@@ -51,6 +51,10 @@ export function Doctors() {
     return <AdminDoctors />;
   }
 
+  return <PatientDoctors />;
+}
+
+function PatientDoctors() {
   const navigate = useNavigate();
 
   const [doctors, setDoctors] = useState([]);

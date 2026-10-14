@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Patients", description = "Endpoints for patient management and directory")
 @RestController
 @RequestMapping("/api/patients")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${cors.allowed-origins:http://localhost:5173}")
 public class PatientController {
 
     private final PatientService patientService;

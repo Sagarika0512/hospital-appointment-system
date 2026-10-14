@@ -25,6 +25,7 @@ import { SkeletonTable } from "../components/feedback/Skeleton";
 import { EmptyState } from "../components/feedback/EmptyState";
 import { ErrorState } from "../components/feedback/ErrorState";
 import {
+  CalendarIcon,
   SearchIcon,
   EyeIcon,
   XIcon,

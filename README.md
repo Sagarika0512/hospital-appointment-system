@@ -66,6 +66,7 @@ DB_USERNAME=root
 DB_PASSWORD=your_local_password
 JWT_SECRET=your_secure_256_bit_jwt_secret_key
 JWT_EXPIRATION=86400000
+CORS_ALLOWED_ORIGINS=http://localhost:5173
 ```
 *(Note: `.env` is ignored by git and will never be committed).*
 
@@ -115,6 +116,7 @@ The application utilizes Spring Profiles for environment separation:
 - `DB_PASSWORD`: Database password
 - `JWT_SECRET`: Base64/HMAC secret key used for signing and verifying JWT tokens
 - `JWT_EXPIRATION`: Token validity in milliseconds (default: `86400000` / 24 hours)
+- `CORS_ALLOWED_ORIGINS`: Comma-separated list of allowed frontend origins (default in dev: `http://localhost:5173`)
 
 ---
 
@@ -178,7 +180,7 @@ Before deploying to a staging or production environment:
 1. **Activate Production Profile**: Set `SPRING_PROFILES_ACTIVE=prod`.
 2. **Schema Management**: The production profile runs with `spring.jpa.hibernate.ddl-auto=validate`. All production database schema migrations must be applied manually or managed via an external migration pipeline before application launch.
 3. **Inject Secrets**: Ensure `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, and `JWT_SECRET` are passed via secret managers (AWS Secrets Manager, HashiCorp Vault, Kubernetes Secrets). Never store production secrets in source control.
-4. **CORS Configuration**: Update `SecurityConfig.java` to restrict CORS origins to authorized production frontend domains instead of `localhost:5173`.
+4. **CORS Configuration**: Set `CORS_ALLOWED_ORIGINS` to the exact production frontend URL(s) (e.g. `https://hospital.example.com`). Wildcards with credentials are disallowed by Spring Security.
 5. **Frontend API Target**: Set `VITE_API_BASE_URL` in the frontend build pipeline to the public HTTPS backend API gateway URL.
 
 ---

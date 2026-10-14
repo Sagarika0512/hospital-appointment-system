@@ -20,11 +20,9 @@ import { SkeletonCard, SkeletonTable } from "../components/feedback/Skeleton";
 import { EmptyState } from "../components/feedback/EmptyState";
 import { ErrorState } from "../components/feedback/ErrorState";
 import {
+  CalendarIcon,
   StethoscopeIcon,
   UsersIcon,
-  ClockIcon,
-  CheckIcon,
-  XIcon,
   ChevronRightIcon,
 } from "../components/ui/Icons";
 
@@ -138,8 +136,8 @@ export function AdminDashboard() {
     setAppointmentsLoading(true);
     setAppointmentsError(null);
     try {
-      // Request top 8 recent appointments
-      const response = await getAppointments(0, 8);
+      // Request top 8 recent appointments sorted by appointmentDate descending
+      const response = await getAppointments(0, 8, "appointmentDate", "desc");
       const total = typeof response?.totalElements === "number"
         ? response.totalElements
         : Array.isArray(response)
@@ -275,13 +273,13 @@ export function AdminDashboard() {
         )}
       </section>
 
-      {/* ── Section 2: Appointment Status Overview ── */}
-      <section className="cp-status-distribution-card" aria-label="Appointment Status Overview">
+      {/* ── Section 2: Recent Appointments Status Summary ── */}
+      <section className="cp-status-distribution-card" aria-label="Recent Appointments Status Summary">
         <div className="cp-distribution-header">
           <div>
-            <h3 className="cp-distribution-title">Appointment Status Distribution</h3>
+            <h3 className="cp-distribution-title">Recent Appointments Status Summary</h3>
             <span className="cp-distribution-scope">
-              Scope: Based on {statusStats.total} recent appointments loaded on ledger
+              Scope: Status breakdown of the {statusStats.total} most recent appointments
             </span>
           </div>
         </div>
